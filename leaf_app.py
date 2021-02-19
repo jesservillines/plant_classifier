@@ -145,7 +145,7 @@ def homepage():
     </body>
     """
     st.markdown(html_temp, unsafe_allow_html = True)
-    image = Image.open(datapath+'image_1.png')
+    image = Image.open(datapath+'image_1.jpg')
     st.image(image, use_column_width = True)
 
 
