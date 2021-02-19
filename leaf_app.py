@@ -33,7 +33,7 @@ suggestions = {
  'Late blight':"You have got the Scab! Do the Scab treatment as soon as possible!",
  'Healthy':"You are healthy! Continue doing what you are doing.",
  'Healthy':"You are healthy! Continue doing what you are doing.",
- 'Healthy':"You are healthy! Continue doing what you are doing."",
+ 'Healthy':"You are healthy! Continue doing what you are doing.",
  'Powdery mildew':"You have got the Scab! Do the Scab treatment as soon as possible!",
  'Leaf_scorch':"You have got the Scab! Do the Scab treatment as soon as possible!",
  'healthy':"You have got the Scab! Do the Scab treatment as soon as possible!",
