@@ -91,7 +91,7 @@ healthType = ['Scab',
  'Healthy']
 
 
-datapath = "app_pics/"
+datapath = "./app_pics/"
 
 
 def main():
@@ -112,7 +112,7 @@ def main():
 def health():
     st.title("Check the health of your plant")
     set_png_as_page_bg(datapath+'image_1.jpg')
-    leaf_model = load_model('models/model.h5')
+    leaf_model = load_model('./models/model.h5')
     st.set_option('deprecation.showfileUploaderEncoding', True)
     st.subheader("Take photo of a leaf with your camera and upload here.")
     uploaded_file = st.file_uploader("Upload an image", type = "jpg")
