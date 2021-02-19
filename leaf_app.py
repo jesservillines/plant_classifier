@@ -6,7 +6,7 @@ from PIL import Image
 import base64
 import sys
 
-classes = {0:"Alluvial",1:"Black",2:"Clay",3:"Red"}
+#classes = {0:"Scab",1:"Rot",2:"Rust",3:"Healthy"}
 
 suggestions = {
 'Scab':"You have got the Scab! Do the Scab treatment as soon as possible!",
