@@ -8,8 +8,45 @@ import sys
 
 classes = {0:"Alluvial",1:"Black",2:"Clay",3:"Red"}
 
-suggestions = {"Alluvial": "Tomatoes, Sage, Roses, Butterfly bush, Ferns, Daffodils, Lavender", "Black" : "Citrus fruits, Sunflower, Legumes, Microgreens, Peppers",
-"Clay" : "Kale, Lettuce, Broccoli, Cabbage, Aster, Daylily, Magnolia, Juniper, Pine, Geranium, Ivy", "Red" : "Peanuts, Grams, Potatoes, Sweet potato, Banana, Papaya"}
+suggestions = {
+'Scab':"You have got the Scab! Do the Scab treatment as soon as possible!",
+ 'Rot':"You have got the Rot! Do the Rot treatment as soon as possible!",
+ 'Rust':"You have got the Rust! Do the Rust treatment as soon as possible!" ,
+ 'Healthy':"You are healthy! Continue doing what you are doing.",
+ 'Healthy':"You are healthy! Continue doing what you are doing.",
+ 'Powdery mildew':"You have got the Scab! Do the Scab treatment as soon as possible!",
+ 'Healthy':"You are healthy! Continue doing what you are doing.",
+ 'Leaf spot':"You have got the Scab! Do the Scab treatment as soon as possible!",
+ 'Common_rust':"You have got the Scab! Do the Scab treatment as soon as possible!",
+ 'Northern Leaf Blight':"You have got the Scab! Do the Scab treatment as soon as possible!",
+ 'Healthy':"You are healthy! Continue doing what you are doing.",
+ 'Black rot':"You have got the Scab! Do the Scab treatment as soon as possible!",
+ 'Black Measles':"You have got the Scab! Do the Scab treatment as soon as possible!",
+ 'Leaf blight':"You have got the Scab! Do the Scab treatment as soon as possible!",
+ 'Healthy':"You have got the Scab! Do the Scab treatment as soon as possible!",
+ 'Citrus greening':"You have got the Scab! Do the Scab treatment as soon as possible!",
+ 'Bacterial spot':"You have got the Scab! Do the Scab treatment as soon as possible!",
+ 'Healthy':"You are healthy! Continue doing what you are doing.",
+ 'Bacterial spot':"You have got the Scab! Do the Scab treatment as soon as possible!",
+ 'Healthy':"You are healthy! Continue doing what you are doing.",
+ 'Early blight':"You have got the Scab! Do the Scab treatment as soon as possible!",
+ 'Late blight':"You have got the Scab! Do the Scab treatment as soon as possible!",
+ 'Healthy':"You are healthy! Continue doing what you are doing.",
+ 'Healthy':"You are healthy! Continue doing what you are doing.",
+ 'Healthy':"You are healthy! Continue doing what you are doing."",
+ 'Powdery mildew':"You have got the Scab! Do the Scab treatment as soon as possible!",
+ 'Leaf_scorch':"You have got the Scab! Do the Scab treatment as soon as possible!",
+ 'healthy':"You have got the Scab! Do the Scab treatment as soon as possible!",
+ 'Bacterial spot':"You have got the Scab! Do the Scab treatment as soon as possible!",
+ 'Early blight':"You have got the Scab! Do the Scab treatment as soon as possible!",
+ 'Late blight':"You have got the Scab! Do the Scab treatment as soon as possible!",
+ 'Leaf Mold':"You have got the Scab! Do the Scab treatment as soon as possible!",
+ 'Leaf spot':"You have got the Scab! Do the Scab treatment as soon as possible!",
+ 'Spider mite':"You have got the Scab! Do the Scab treatment as soon as possible!",
+ 'Target Spot':"You have got the Scab! Do the Scab treatment as soon as possible!",
+ 'Yellow Leaf':"You have got the Scab! Do the Scab treatment as soon as possible!",
+ 'Mosaic virus':"You have got the Scab! Do the Scab treatment as soon as possible!",
+ 'Healthy':"You are healthy! Continue doing what you are doing."}
 
 sys.setrecursionlimit(10000)
 
@@ -77,7 +114,7 @@ def health():
     set_png_as_page_bg(datapath+'image_1.jpg')
     leaf_model = load_model('models/model.h5')
     st.set_option('deprecation.showfileUploaderEncoding', True)
-    st.subheader("Take photo of a leaf and place here.")
+    st.subheader("Take photo of a leaf with your camera and upload here.")
     uploaded_file = st.file_uploader("Upload an image", type = "jpg")
     if uploaded_file is not None:
         image = Image.open(uploaded_file)
@@ -90,6 +127,8 @@ def health():
         result = model_predict(datapath+name, leaf_model)
         pred = healthType[result]
         st.header("Your leaf is - "+ pred )
+        st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
+
 
 
 def homepage():
