@@ -128,10 +128,11 @@ def health():
         # pred = healthType[result]
         # st.header("Your leaf is - "+ pred )
         # st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
-        result = model_predict(image, leaf_model)
-        pred = healthType[result]
-        st.header("Your leaf is - "+ pred )
-        st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
+        st.image(image, caption='Uploaded Image.', use_column_width=True)
+        st.write("")
+        st.write("Classifying...")
+        label = predict(uploaded_file)
+        st.write('%s (%.2f%%)' % (label[1], label[2]*100))
 
 
 
