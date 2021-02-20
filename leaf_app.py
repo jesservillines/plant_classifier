@@ -153,6 +153,7 @@ def health():
 
 #######################################################################################################################
     if uploaded_file is not None:
+        image = Image.open(uploaded_file)
         st.image(image, use_column_width=True)
         st.write("")
         name = "temp1.jpg"
