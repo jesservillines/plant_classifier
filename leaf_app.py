@@ -149,12 +149,12 @@ def homepage():
     </body>
     """
     st.markdown(html_temp, unsafe_allow_html = True)
-    image = Image.open(datapath+'image_1.jpg')
+    image = Image.open(datapath) #+'image_1.jpg')
     st.image(image, use_column_width = True)
 
 
 def about():
-    set_png_as_page_bg(datapath+'image_1.jpg')
+    set_png_as_page_bg(datapath+'temp1.jpg')
     st.title("Leaf Life")
     st.header("“How is your plant doing?“")
     st.header("Jesse Villines")
