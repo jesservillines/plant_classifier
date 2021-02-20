@@ -145,7 +145,7 @@ def health():
         st.image(image, width = 256, height = 256)
         image = array_to_img(image)
         image = img_to_array(image)
-        image = image.reshape((1,250,250,3))
+        image = image.reshape((1,256,256,3))
         # image = np.expand_dims(image,axis=0)
         result = np.argmax(leaf_model.predict(image))
         pred = healthType[result]
