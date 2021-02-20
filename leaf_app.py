@@ -144,7 +144,7 @@ def health():
         image = Image.open(uploaded_file)
         img_array = np.array(image)
         st.image(image, width = 256, height = 256)
-        image = image.reshape((1,256,256,3))
+        #image = image.reshape((1,256,256,3))
         pred = leaf_model.predict(image)
         # image = np.expand_dims(image,axis=0)
         pred = healthType[result]
