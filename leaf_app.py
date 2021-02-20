@@ -117,7 +117,7 @@ def health():
     result_2 = st.button('Cancel')
     # Run model if image confirmed
     if result:
-        model = load_model('/model/leaf_model/')
+        model = load_model('model/model.h5')
         img = array_to_img(file)
         array = img_to_array(img)
         array = array.reshape((1,416,416,3))
