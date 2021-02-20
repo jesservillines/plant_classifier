@@ -130,7 +130,7 @@ def health():
         image = img_to_array(image)
         image = image/255
         image = np.expand_dims(image,axis=0)
-        result = np.argmax(model.predict(image))
+        result = np.argmax(leaf_model.predict(image))
         pred = healthType[result]
         st.header("The state of your leaf is - "+ pred )
         st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
