@@ -142,9 +142,8 @@ def health():
     if uploaded_file is not None:
         #image = load_img(image_path,target_size=(250,250))
         image = Image.open(uploaded_file)
+        img_array = np.array(image)
         st.image(image, width = 256, height = 256)
-        image = array_to_img(image)
-        image = img_to_array(image)
         image = image.reshape((1,256,256,3))
         pred = leaf_model.predict(image)
         # image = np.expand_dims(image,axis=0)
