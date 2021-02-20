@@ -114,10 +114,10 @@ def health():
     st.set_option('deprecation.showfileUploaderEncoding', True)
     st.subheader("Take photo of a leaf with your camera and upload here.")
     uploaded_file = st.file_uploader("Upload an image", type = ['jpg', 'png'])
-    if img_file_buffer is not None:
-        image = Image.open(img_file_buffer)
+    if uploaded_file is not None:
+        image = Image.open(uploaded_file)
         img_array = np.array(image) # if you want to pass it to OpenCV
-        
+
         st.image(
         image,
         caption=f"You amazing image has shape {img_array.shape[0:2]}",
