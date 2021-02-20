@@ -111,7 +111,7 @@ def main():
 
 
 
-st.subheader("The types of crops suggested for "+ pred + " soil are: "+ suggestions[pred])
+
 
 
 
@@ -131,7 +131,8 @@ def health():
         result = np.argmax(model.predict(image))
         pred = healthType[result]
         st.header("The state of your leaf is - "+ pred )
-        
+        st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
+
 #######################################################################################################################
         # image = Image.open(uploaded_file)
         # st.image(image, use_column_width=True)
