@@ -3,9 +3,9 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import load_img, img_to_array
 import numpy as np
 from PIL import Image
-from classify import predict
 import base64
 import sys
+import io
 
 #classes = {0:"Scab",1:"Rot",2:"Rust",3:"Healthy"}
 
@@ -118,7 +118,12 @@ def health():
     st.subheader("Take photo of a leaf with your camera and upload here.")
     uploaded_file = st.file_uploader("Upload an image", type = "jpg")
     if uploaded_file is not None:
-        image = Image.open(uploaded_file)
+        #image = Image.open(uploaded_file)
+        img = Image.open(io.BytesIO(uploaded_file))
+        img = img.convert('RGB')
+        img = img.resize(target_size, Image.NEAREST)
+        img = image.img_to_array(img)
+
         # st.image(image, use_column_width=True)
         # st.write("")
         # name = "temp1.jpg"
@@ -129,11 +134,10 @@ def health():
         # pred = healthType[result]
         # st.header("Your leaf is - "+ pred )
         # st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
-        st.image(image, caption='Uploaded Image.', use_column_width=True)
-        st.write("")
-        st.write("Classifying...")
-        label = predict(uploaded_file)
-        st.write('%s (%.2f%%)' % (label[1], label[2]*100))
+        result = model_predict(img, leaf_model)
+        pred = healthType[result]
+        st.header("Your leaf is - "+ pred )
+        st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
 
 
 
