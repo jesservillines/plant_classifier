@@ -113,7 +113,7 @@ def health():
     st.subheader("Take photo of a leaf with your camera and upload here.")
     uploaded_file = st.file_uploader("Upload an image", type = ['jpg', 'png'])
     if uploaded_file is not None:
-        file = Image.open(fileUpload)
+        file = Image.open(uploaded_file)
         st.image(file, width = 224, height = 224)
         array = img_to_array(img)
         pred = np.argmax(leaf_model.predict(array))
