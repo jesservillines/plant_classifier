@@ -125,7 +125,9 @@ def health():
     uploaded_file = st.file_uploader("Upload an image", type = ['jpg', 'png'])
     if uploaded_file is not None:
         #image = load_img(image_path,target_size=(250,250))
-        image = img_to_array(uploaded_file)
+        image = Image.open(uploaded_file)
+        st.image(image, width = 250, height = 250)
+        image = img_to_array(image)
         image = image/255
         image = np.expand_dims(image,axis=0)
         result = np.argmax(model.predict(image))
