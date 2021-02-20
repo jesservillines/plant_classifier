@@ -140,8 +140,9 @@ def health():
 def model_predict(image_path,model):
     image = load_img(image_path,target_size=(224,224))
     image = img_to_array(image)
-    image = image/255
-    image = np.expand_dims(image,axis=0)
+    image = image.reshape((1,128,29,29))
+    #image = image/255
+    #image = np.expand_dims(image,axis=0)
     result = np.argmax(leaf_model.predict(image))
     return result
 
