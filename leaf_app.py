@@ -105,7 +105,8 @@ def main():
 
 
 def health():
-    st.title("Check the health of your plant")
+    st.title("Your plant, is it helthy or what?")
+    st.subheader("Soon you will know.")
     set_png_as_page_bg(datapath+'image_1.jpg')
     leaf_model = load_model('model/model.h5')
     st.set_option('deprecation.showfileUploaderEncoding', True)
@@ -160,11 +161,13 @@ def about():
 
     set_png_as_page_bg(datapath+'image_1.jpg')
     st.title("Leaf Life")
-    st.header("“How is your plant doing?“")
-    st.header("Jesse Villines")
-    st.subheader("Your leaf, is it healthy or what?!")
-    st.subheader("Soon you will know.")
+    st.header("Supported Plants: Apple, blueberry, cherry, corn, grape, orange, peach, bell pepper, potato, raspberry, soybean, squash, strawberry, tomato, and more coming soon!")
+    st.subheader("Author's Linkedin: https://www.linkedin.com/in/jesse-villines/")
+    st.subheader("Author's Github: https://github.com/jesservillines")
     st.subheader("Version 1.0")
+
+
+
 
 #@st.cache(allow_output_mutation=True)
 def get_base64_of_bin_file(bin_file):
