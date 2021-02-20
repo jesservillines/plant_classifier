@@ -128,7 +128,8 @@ def health():
         image = Image.open(uploaded_file)
         st.image(image, use_column_width=True)
         image = img_to_array(image)
-        image = image/255
+        image = image.reshape((128,29,29))
+        #image = image/255
         image = np.expand_dims(image,axis=0)
         result = np.argmax(leaf_model.predict(image))
         pred = healthType[result]
@@ -137,14 +138,14 @@ def health():
 
 
 
-def model_predict(image_path,model):
-    image = load_img(image_path,target_size=(224,224))
-    image = img_to_array(image)
-    image = image.reshape((1,128,29,29))
-    #image = image/255
-    #image = np.expand_dims(image,axis=0)
-    result = np.argmax(leaf_model.predict(image))
-    return result
+# def model_predict(image_path,model):
+#     image = load_img(image_path,target_size=(224,224))
+#     image = img_to_array(image)
+#     image = image.reshape((128,29,29))
+#     #image = image/255
+#     #image = np.expand_dims(image,axis=0)
+#     result = np.argmax(leaf_model.predict(image))
+#     return result
 
 
 def homepage():
