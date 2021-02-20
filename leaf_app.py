@@ -118,8 +118,12 @@ def health():
 
 
 
-        array = img_to_array(file)
-        array = array.reshape((32, 256, 3))
+
+
+        image = img_to_array(file)
+        image = image/255
+        
+
         pred = np.argmax(leaf_model.predict(array))
         pred = healthType[result]
         st.header("Your leaf is - "+ pred )
