@@ -111,7 +111,7 @@ def health():
     fileUpload = st.file_uploader("Choose a file", type = ['jpg', 'png'])
     if fileUpload:
         file = Image.open(fileUpload)
-        st.image(file, width = 416, height = 416)
+        st.image(file, width = 250, height = 250)
     # Confirm or Cancel buttons
     result = st.button('Confirm Image')
     result_2 = st.button('Cancel')
@@ -120,7 +120,7 @@ def health():
         model = load_model('model/model.h5')
         img = array_to_img(file)
         array = img_to_array(img)
-        array = array.reshape((1,416,416,3))
+        array = array.reshape((1,250,250,3))
         pred = model.predict(array)
         pred = np.argmax(pred, axis = 1)
         if pred == 1:
