@@ -146,7 +146,7 @@ def health():
         image = array_to_img(image)
         image = img_to_array(image)
         image = image.reshape((1,256,256,3))
-        pred = model.predict(image)
+        pred = leaf_model.predict(image)
         # image = np.expand_dims(image,axis=0)
         pred = healthType[result]
         st.header("The state of your leaf is - "+ pred )
