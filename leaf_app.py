@@ -105,43 +105,33 @@ def main():
         health()
 
 
-def health():
-    set_png_as_page_bg(datapath+'image_1.jpg')
-    st.title("Check the health of your plant")
-    fileUpload = st.file_uploader("Choose a file", type = ['jpg', 'png'])
-    if fileUpload:
-        file = Image.open(fileUpload)
-        st.image(file, width = 250, height = 250)
-    # Confirm or Cancel buttons
-    result = st.button('Confirm Image')
-    result_2 = st.button('Cancel')
-    # Run model if image confirmed
-    if result:
-        model = load_model('model/model.h5')
-        img = array_to_img(file)
-        array = img_to_array(img)
-        array = array.reshape((1,256,256,3))
-        pred = model.predict(array)
-        pred = np.argmax(pred, axis = 1)
-        if pred == 1:
-        	st.write('All good, site safe')
-        else:
-        	st.write('Safety Violation: Hard hat not worn')
-    else:
-        pass
-    # Ask for new image if Canceled
-    if result_2:
-        st.write('Please select upload another image')
-    else:
-        result_2 = None
 
-    # st.title("Check the health of your plant")
-    # set_png_as_page_bg(datapath+'image_1.jpg')
-    # leaf_model = load_model('model/model.h5')
-    # st.set_option('deprecation.showfileUploaderEncoding', True)
-    # st.subheader("Take photo of a leaf with your camera and upload here.")
-    # uploaded_file = st.file_uploader("Upload an image", type = ['jpg', 'png'])
-    # if uploaded_file is not None:
+
+
+
+
+
+st.subheader("The types of crops suggested for "+ pred + " soil are: "+ suggestions[pred])
+
+
+
+
+def health():
+    st.title("Check the health of your plant")
+    set_png_as_page_bg(datapath+'image_1.jpg')
+    leaf_model = load_model('model/model.h5')
+    st.set_option('deprecation.showfileUploaderEncoding', True)
+    st.subheader("Take photo of a leaf with your camera and upload here.")
+    uploaded_file = st.file_uploader("Upload an image", type = ['jpg', 'png'])
+    if uploaded_file is not None:
+        image = load_img(image_path,target_size=(250,250))
+        image = img_to_array(image)
+        image = image/255
+        image = np.expand_dims(image,axis=0)
+        result = np.argmax(model.predict(image))
+        pred = healthType[result]
+        st.header("The state of your leaf is - "+ pred )
+        
 #######################################################################################################################
         # image = Image.open(uploaded_file)
         # st.image(image, use_column_width=True)
@@ -214,12 +204,11 @@ def set_png_as_page_bg(png_file):
     st.markdown(page_bg_img, unsafe_allow_html=True)
 
 def model_predict(image_path,model):
-    image = load_img(image_path,target_size=(224,224))
+    image = load_img(image_path,target_size=(250,250))
     image = img_to_array(image)
-    image = image.reshape((128,29,29))
-    #image = image/255
-    #image = np.expand_dims(image,axis=0)
-    result = np.argmax(leaf_model.predict(image))
+    image = image/255
+    image = np.expand_dims(image,axis=0)
+    result = np.argmax(model.predict(image))
     return result
 
 if __name__ == '__main__':
