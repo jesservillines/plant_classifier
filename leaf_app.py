@@ -144,7 +144,7 @@ def homepage():
 
 
 def about():
-    set_png_as_page_bg(datapath+'temp1.jpg')
+    set_png_as_page_bg(datapath+'image_1.jpg')
     st.title("Leaf Life")
     st.header("“How is your plant doing?“")
     st.header("Jesse Villines")
