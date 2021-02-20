@@ -105,7 +105,7 @@ def main():
 
 
 def health():
-    st.title("Your plant, is it helthy or what?")
+    st.title("Your plant, is it healthy or what?!")
     st.subheader("Soon you will know.")
     set_png_as_page_bg(datapath+'image_1.jpg')
     leaf_model = load_model('model/model.h5')
