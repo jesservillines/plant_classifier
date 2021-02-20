@@ -15,38 +15,38 @@ suggestions = {
  'Rust':"You have got the Rust! Do the Rust treatment as soon as possible!" ,
  'Healthy':"You are healthy! Continue doing what you are doing.",
  'Healthy':"You are healthy! Continue doing what you are doing.",
- 'Powdery mildew':"You have got the Scab! Do the Scab treatment as soon as possible!",
+ 'Powdery mildew':"You have got the Powdery mildew! Do the Powdery mildew treatment as soon as possible!",
  'Healthy':"You are healthy! Continue doing what you are doing.",
- 'Leaf spot':"You have got the Scab! Do the Scab treatment as soon as possible!",
- 'Common_rust':"You have got the Scab! Do the Scab treatment as soon as possible!",
- 'Northern Leaf Blight':"You have got the Scab! Do the Scab treatment as soon as possible!",
+ 'Leaf spot':"You have got the Leaf spot! Do the Leaf spot treatment as soon as possible!",
+ 'Common_rust':"You have got the Common_rust! Do the Common_rust treatment as soon as possible!",
+ 'Northern Leaf Blight':"You have got the Northern Leaf Blight! Do the Northern Leaf Blight treatment as soon as possible!",
  'Healthy':"You are healthy! Continue doing what you are doing.",
- 'Black rot':"You have got the Scab! Do the Scab treatment as soon as possible!",
- 'Black Measles':"You have got the Scab! Do the Scab treatment as soon as possible!",
- 'Leaf blight':"You have got the Scab! Do the Scab treatment as soon as possible!",
- 'Healthy':"You have got the Scab! Do the Scab treatment as soon as possible!",
- 'Citrus greening':"You have got the Scab! Do the Scab treatment as soon as possible!",
- 'Bacterial spot':"You have got the Scab! Do the Scab treatment as soon as possible!",
+ 'Black rot':"You have got the Black rot! Do the Black rot treatment as soon as possible!",
+ 'Black Measles':"You have got the Black Measles! Do the Black Measles treatment as soon as possible!",
+ 'Leaf blight':"You have got the Leaf blight! Do the Leaf blight treatment as soon as possible!",
+ 'Healthy':"You have got the Healthy! Do the Healthy treatment as soon as possible!",
+ 'Citrus greening':"You have got the Citrus greening! Do the Citrus greening treatment as soon as possible!",
+ 'Bacterial spot':"You have got the Bacterial spot! Do the Bacterial spot treatment as soon as possible!",
  'Healthy':"You are healthy! Continue doing what you are doing.",
- 'Bacterial spot':"You have got the Scab! Do the Scab treatment as soon as possible!",
+ 'Bacterial spot':"You have got the Bacterial spot! Do the Bacterial spot treatment as soon as possible!",
  'Healthy':"You are healthy! Continue doing what you are doing.",
- 'Early blight':"You have got the Scab! Do the Scab treatment as soon as possible!",
- 'Late blight':"You have got the Scab! Do the Scab treatment as soon as possible!",
+ 'Early blight':"You have got the Early blight! Do the Early blight treatment as soon as possible!",
+ 'Late blight':"You have got the Late blight! Do the Late blight treatment as soon as possible!",
  'Healthy':"You are healthy! Continue doing what you are doing.",
  'Healthy':"You are healthy! Continue doing what you are doing.",
  'Healthy':"You are healthy! Continue doing what you are doing.",
- 'Powdery mildew':"You have got the Scab! Do the Scab treatment as soon as possible!",
- 'Leaf_scorch':"You have got the Scab! Do the Scab treatment as soon as possible!",
- 'healthy':"You have got the Scab! Do the Scab treatment as soon as possible!",
- 'Bacterial spot':"You have got the Scab! Do the Scab treatment as soon as possible!",
- 'Early blight':"You have got the Scab! Do the Scab treatment as soon as possible!",
- 'Late blight':"You have got the Scab! Do the Scab treatment as soon as possible!",
- 'Leaf Mold':"You have got the Scab! Do the Scab treatment as soon as possible!",
- 'Leaf spot':"You have got the Scab! Do the Scab treatment as soon as possible!",
- 'Spider mite':"You have got the Scab! Do the Scab treatment as soon as possible!",
- 'Target Spot':"You have got the Scab! Do the Scab treatment as soon as possible!",
- 'Yellow Leaf':"You have got the Scab! Do the Scab treatment as soon as possible!",
- 'Mosaic virus':"You have got the Scab! Do the Scab treatment as soon as possible!",
+ 'Powdery mildew':"You have got the Powdery mildew! Do the Powdery mildew treatment as soon as possible!",
+ 'Leaf_scorch':"You have got the Leaf_scorch! Do the Leaf_scorch treatment as soon as possible!",
+ 'healthy':"You have got the healthy! Do the healthy treatment as soon as possible!",
+ 'Bacterial spot':"You have got the Bacterial spot! Do the Bacterial spot treatment as soon as possible!",
+ 'Early blight':"You have got the Early blight! Do the Early blight treatment as soon as possible!",
+ 'Late blight':"You have got the Late blight! Do the Late blight treatment as soon as possible!",
+ 'Leaf Mold':"You have got the Leaf Mold! Do the Leaf Mold treatment as soon as possible!",
+ 'Leaf spot':"You have got the Leaf spot! Do the Leaf spot treatment as soon as possible!",
+ 'Spider mite':"You have got the Spider mite! Do the Spider mite treatment as soon as possible!",
+ 'Target Spot':"You have got the Target Spot! Do the Target Spot treatment as soon as possible!",
+ 'Yellow Leaf':"You have got the Yellow Leaf! Do the Yellow Leaf treatment as soon as possible!",
+ 'Mosaic virus':"You have got the Mosaic virus! Do the Mosaic virus treatment as soon as possible!",
  'Healthy':"You are healthy! Continue doing what you are doing."}
 
 sys.setrecursionlimit(10000)
@@ -113,45 +113,8 @@ def health():
     leaf_model = load_model('model/model.h5')
     st.set_option('deprecation.showfileUploaderEncoding', True)
     st.subheader("Take photo of a leaf with your camera and upload here.")
-    uploaded_file = st.file_uploader("Upload an image", type = ['jpg', 'png'])
-#     ####################################################################################################################### SHAPE CHECK 256 x 256
-#     # if uploaded_file is not None:
-#     #     image = Image.open(uploaded_file)
-#     #     img_array = np.array(image) # if you want to pass it to OpenCV
-#     #
-#     #     st.image(
-#     #     image,
-#     #     caption=f"You amazing image has shape {img_array.shape[0:2]}",
-#     #     use_column_width=True,
-#     # )
-#
-# ####################################################################################################################### SHAPE ERROR, prefered method
-#     # if uploaded_file is not None:
-#     #     #image = load_img(image_path,target_size=(250,250))
-#     #     image = Image.open(uploaded_file)
-#     #     st.image(image, width = 256, height = 256)
-#     #     image = img_to_array(image)
-#     #     image = image/255
-#     #     image = np.expand_dims(image,axis=0)
-#     #     result = np.argmax(leaf_model.predict(image))
-#     #     pred = healthType[result]
-#     #     st.header("The state of your leaf is - "+ pred )
-#     #     st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
-#
-#     ####################################################################################################################### SHAPE ERROR, secondary method
-#     if uploaded_file is not None:
-#         #image = load_img(image_path,target_size=(250,250))
-#         image = Image.open(uploaded_file)
-#         img_array = np.array(image)
-#         st.image(image, width = 256, height = 256)
-#         #image = image.reshape((1,256,256,3))
-#         pred = leaf_model.predict(image)
-#         # image = np.expand_dims(image,axis=0)
-#         pred = healthType[result]
-#         st.header("The state of your leaf is - "+ pred )
-#         st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
+    uploaded_file = st.file_uploader("Upload an image", type = ['jpg', 'png', 'jpeg'])
 
-#######################################################################################################################
     if uploaded_file is not None:
         image = Image.open(uploaded_file)
         st.image(image, use_column_width=True)
@@ -162,18 +125,6 @@ def health():
         pred = healthType[result]
         st.header("Your leaf is - "+ pred )
         st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
-
-#######################################################################################################################
-        # image = Image.open(uploaded_file)
-        # st.image(image, use_column_width=True)
-        # image = img_to_array(image)
-        # image = image.reshape((1,250,250,3))
-        # #image = image/255
-        # image = np.expand_dims(image,axis=0)
-        # result = np.argmax(leaf_model.predict(image))
-        # pred = healthType[result]
-        # st.header("Your leaf is - "+ pred )
-        # st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
 
 
 
