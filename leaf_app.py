@@ -152,7 +152,7 @@ def health():
 #         st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
 
 #######################################################################################################################
-        image = Image.open(uploaded_file)
+    if uploaded_file is not None:
         st.image(image, use_column_width=True)
         st.write("")
         name = "temp1.jpg"
