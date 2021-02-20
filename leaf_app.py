@@ -95,14 +95,12 @@ datapath = "app_pics/"
 
 
 def main():
-    page = st.sidebar.selectbox("App Selections", ["Homepage", "About", "Plant_Health"])
+    page = st.sidebar.selectbox("App Selections", ["Homepage", "About"])
     if page == "Homepage":
-        homepage()
+        health()
     elif page == "About":
         about()
-    elif page == "Plant_Health":
-        health()
-
+    
 
 
 
