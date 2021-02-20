@@ -131,10 +131,19 @@ def health():
 
         image = Image.open(uploaded_file)
         st.image(image, use_column_width=True)
-        st.write("")
-        name = "temp1.jpg"
-        image.save(datapath+name)
-        result = model_predict(datapath+name, leaf_model)
+        # st.write("")
+        # name = "temp1.jpg"
+        # image.save(datapath+name)
+        # result = model_predict(datapath+name, leaf_model)
+        # pred = healthType[result]
+        # st.header("Your leaf is - "+ pred )
+        # st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
+
+
+        image = img_to_array(image)
+        image = image/255
+        image = np.expand_dims(image,axis=0)
+        result = np.argmax(model.predict(image))
         pred = healthType[result]
         st.header("Your leaf is - "+ pred )
         st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
