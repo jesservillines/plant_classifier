@@ -122,7 +122,7 @@ def health():
         img = Image.open(uploaded_file)
         img = img.convert('RGB')
         #img = img.resize(target_size, Image.NEAREST)
-        img = Image.img_to_array(img)
+        img = img.img_to_array(img)
 
         # st.image(image, use_column_width=True)
         # st.write("")
