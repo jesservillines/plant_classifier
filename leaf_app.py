@@ -139,17 +139,17 @@ def health():
     #     st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
 
     ####################################################################################################################### SHAPE ERROR, secondary method
-        if uploaded_file is not None:
-            #image = load_img(image_path,target_size=(250,250))
-            image = Image.open(uploaded_file)
-            st.image(image, width = 256, height = 256)
-            image = img_to_array(image)
-            image = image.reshape((1,256,256,3))
-            # image = np.expand_dims(image,axis=0)
-            result = np.argmax(leaf_model.predict(image))
-            pred = healthType[result]
-            st.header("The state of your leaf is - "+ pred )
-            st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
+    if uploaded_file is not None:
+        #image = load_img(image_path,target_size=(250,250))
+        image = Image.open(uploaded_file)
+        st.image(image, width = 256, height = 256)
+        image = img_to_array(image)
+        image = image.reshape((1,256,256,3))
+        # image = np.expand_dims(image,axis=0)
+        result = np.argmax(leaf_model.predict(image))
+        pred = healthType[result]
+        st.header("The state of your leaf is - "+ pred )
+        st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
 
 #######################################################################################################################
         # image = Image.open(uploaded_file)
