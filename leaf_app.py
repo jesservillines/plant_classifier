@@ -96,18 +96,13 @@ datapath = "app_pics/"
 
 
 def main():
-
     page = st.sidebar.selectbox("App Selections", ["Homepage", "About", "Plant_Health"])
-    if page == "Identify":
-        st.title("Soil Identifier")
-        identify()
-    elif page == "Homepage":
+    if page == "Homepage":
         homepage()
     elif page == "About":
         about()
     elif page == "Plant_Health":
         health()
-
 
 
 def health():
@@ -116,23 +111,35 @@ def health():
     leaf_model = load_model('model/model.h5')
     st.set_option('deprecation.showfileUploaderEncoding', True)
     st.subheader("Take photo of a leaf with your camera and upload here.")
-    uploaded_file = st.file_uploader("Upload an image", type = "jpg")
+    uploaded_file = st.file_uploader("Upload an image", type = ['jpg', 'png'])
     if uploaded_file is not None:
-        image = Image.open(uploaded_file)
-
-
-        st.image(image, use_column_width=True)
-        st.write("")
-        name = "temp1.jpg"
-
-        image.save(datapath+name)
-
-        result = model_predict(datapath+name, leaf_model)
+        file = Image.open(fileUpload)
+        st.image(file, width = 224, height = 224)
+        array = img_to_array(img)
+        pred = np.argmax(leaf_model.predict(array))
         pred = healthType[result]
         st.header("Your leaf is - "+ pred )
         st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
 
+        # image = Image.open(uploaded_file)
+        # st.image(image, use_column_width=True)
+        # st.write("")
+        # name = "temp1.jpg"
+        # image.save(datapath+name)
+        # result = model_predict(datapath+name, leaf_model)
+        # pred = healthType[result]
+        # st.header("Your leaf is - "+ pred )
+        # st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
 
+
+
+def model_predict(image_path,model):
+    image = load_img(image_path,target_size=(224,224))
+    image = img_to_array(image)
+    image = image/255
+    image = np.expand_dims(image,axis=0)
+    result = np.argmax(model.predict(image))
+    return result
 
 
 def homepage():
@@ -158,10 +165,8 @@ def about():
     st.title("Leaf Life")
     st.header("“How is your plant doing?“")
     st.header("Jesse Villines")
-
     st.subheader("Your leaf, is it healthy or what?!")
     st.subheader("Soon you will know.")
-
     st.subheader("Version 1.0")
 
 #@st.cache(allow_output_mutation=True)
@@ -181,20 +186,7 @@ def set_png_as_page_bg(png_file):
     }
     </style>
     ''' % bin_str
-
     st.markdown(page_bg_img, unsafe_allow_html=True)
-
-
-def model_predict(image_path,model):
-
-    image = load_img(image_path,target_size=(224,224))
-    image = img_to_array(image)
-    image = image/255
-    image = np.expand_dims(image,axis=0)
-
-    result = np.argmax(model.predict(image))
-    return result
-
 
 if __name__ == '__main__':
     main()
