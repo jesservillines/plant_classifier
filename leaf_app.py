@@ -113,31 +113,31 @@ def health():
     st.subheader("Take photo of a leaf with your camera and upload here.")
     uploaded_file = st.file_uploader("Upload an image", type = ['jpg', 'png'])
     if uploaded_file is not None:
-        file = Image.open(uploaded_file)
-        st.image(file, width = 224, height = 224)
-
-
-
-
-
-        image = img_to_array(file)
-        image = image/255
-        
-
-        pred = np.argmax(leaf_model.predict(image))
-        pred = healthType[result]
-        st.header("Your leaf is - "+ pred )
-        st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
-
-        # image = Image.open(uploaded_file)
-        # st.image(image, use_column_width=True)
-        # st.write("")
-        # name = "temp1.jpg"
-        # image.save(datapath+name)
-        # result = model_predict(datapath+name, leaf_model)
+        # file = Image.open(uploaded_file)
+        # st.image(file, width = 224, height = 224)
+        #
+        #
+        #
+        #
+        #
+        # image = img_to_array(file)
+        # image = image/255
+        #
+        #
+        # pred = np.argmax(leaf_model.predict(image))
         # pred = healthType[result]
         # st.header("Your leaf is - "+ pred )
         # st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
+
+        image = Image.open(uploaded_file)
+        st.image(image, use_column_width=True)
+        st.write("")
+        name = "temp1.jpg"
+        image.save(datapath+name)
+        result = model_predict(datapath+name, leaf_model)
+        pred = healthType[result]
+        st.header("Your leaf is - "+ pred )
+        st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
 
 
 
