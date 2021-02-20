@@ -124,8 +124,8 @@ def health():
     st.subheader("Take photo of a leaf with your camera and upload here.")
     uploaded_file = st.file_uploader("Upload an image", type = ['jpg', 'png'])
     if uploaded_file is not None:
-        image = load_img(image_path,target_size=(250,250))
-        image = img_to_array(image)
+        #image = load_img(image_path,target_size=(250,250))
+        image = img_to_array(uploaded_file)
         image = image/255
         image = np.expand_dims(image,axis=0)
         result = np.argmax(model.predict(image))
