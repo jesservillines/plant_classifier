@@ -119,7 +119,7 @@ def health():
     uploaded_file = st.file_uploader("Upload an image", type = "jpg")
     if uploaded_file is not None:
         #image = Image.open(uploaded_file)
-        img = Image.open(io.BytesIO(uploaded_file))
+        img = Image.open(uploaded_file)
         img = img.convert('RGB')
         img = img.resize(target_size, Image.NEAREST)
         img = image.img_to_array(img)
