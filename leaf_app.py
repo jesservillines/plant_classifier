@@ -144,6 +144,20 @@ def homepage():
 
 
 def about():
+
+    html_temp = """
+    <html>
+    <head>
+    <style>
+    body {
+      background-color: #fe2631;
+    }
+    </style>
+    </head>
+    <body>
+    </body>
+    """
+
     set_png_as_page_bg(datapath+'image_1.jpg')
     st.title("Leaf Life")
     st.header("“How is your plant doing?“")
