@@ -116,7 +116,7 @@ def health():
     st.set_option('deprecation.showfileUploaderEncoding', True)
     st.subheader("Take photo of a leaf with your camera and upload here.")
     uploaded_file = st.file_uploader("Upload an image", type = "jpg")
-    # if uploaded_file is not None:
+    if uploaded_file is not None:
     #     image = Image.open(uploaded_file)
     #     st.image(image, use_column_width=True)
     #     st.write("")
