@@ -120,7 +120,7 @@ def health():
         model = load_model('model/model.h5')
         img = array_to_img(file)
         array = img_to_array(img)
-        array = array.reshape((1,250,250,3))
+        array = array.reshape((1,256,256,3))
         pred = model.predict(array)
         pred = np.argmax(pred, axis = 1)
         if pred == 1:
