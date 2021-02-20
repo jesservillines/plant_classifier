@@ -117,7 +117,7 @@ def health():
     result_2 = st.button('Cancel')
     # Run model if image confirmed
     if result:
-        model = load_model('./models/005_model_3D/')
+        model = load_model('/model/leaf_model/')
         img = array_to_img(file)
         array = img_to_array(img)
         array = array.reshape((1,416,416,3))
@@ -181,7 +181,7 @@ def homepage():
     </body>
     """
     st.markdown(html_temp, unsafe_allow_html = True)
-    image = Image.open(datapath) #+'image_1.jpg')
+    image = Image.open(datapath) +'image_1.jpg')
     st.image(image, use_column_width = True)
 
 
