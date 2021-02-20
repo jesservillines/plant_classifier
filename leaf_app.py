@@ -115,6 +115,7 @@ def health():
     if uploaded_file is not None:
         file = Image.open(uploaded_file)
         st.image(file, width = 224, height = 224)
+        img = array_to_img(file)
         array = img_to_array(img)
         pred = np.argmax(leaf_model.predict(array))
         pred = healthType[result]
