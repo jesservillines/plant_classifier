@@ -114,53 +114,53 @@ def health():
     st.set_option('deprecation.showfileUploaderEncoding', True)
     st.subheader("Take photo of a leaf with your camera and upload here.")
     uploaded_file = st.file_uploader("Upload an image", type = ['jpg', 'png'])
-    ####################################################################################################################### SHAPE CHECK 256 x 256
-    # if uploaded_file is not None:
-    #     image = Image.open(uploaded_file)
-    #     img_array = np.array(image) # if you want to pass it to OpenCV
-    #
-    #     st.image(
-    #     image,
-    #     caption=f"You amazing image has shape {img_array.shape[0:2]}",
-    #     use_column_width=True,
-    # )
-
-####################################################################################################################### SHAPE ERROR, prefered method
-    # if uploaded_file is not None:
-    #     #image = load_img(image_path,target_size=(250,250))
-    #     image = Image.open(uploaded_file)
-    #     st.image(image, width = 256, height = 256)
-    #     image = img_to_array(image)
-    #     image = image/255
-    #     image = np.expand_dims(image,axis=0)
-    #     result = np.argmax(leaf_model.predict(image))
-    #     pred = healthType[result]
-    #     st.header("The state of your leaf is - "+ pred )
-    #     st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
-
-    ####################################################################################################################### SHAPE ERROR, secondary method
-    if uploaded_file is not None:
-        #image = load_img(image_path,target_size=(250,250))
-        image = Image.open(uploaded_file)
-        img_array = np.array(image)
-        st.image(image, width = 256, height = 256)
-        #image = image.reshape((1,256,256,3))
-        pred = leaf_model.predict(image)
-        # image = np.expand_dims(image,axis=0)
-        pred = healthType[result]
-        st.header("The state of your leaf is - "+ pred )
-        st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
+#     ####################################################################################################################### SHAPE CHECK 256 x 256
+#     # if uploaded_file is not None:
+#     #     image = Image.open(uploaded_file)
+#     #     img_array = np.array(image) # if you want to pass it to OpenCV
+#     #
+#     #     st.image(
+#     #     image,
+#     #     caption=f"You amazing image has shape {img_array.shape[0:2]}",
+#     #     use_column_width=True,
+#     # )
+#
+# ####################################################################################################################### SHAPE ERROR, prefered method
+#     # if uploaded_file is not None:
+#     #     #image = load_img(image_path,target_size=(250,250))
+#     #     image = Image.open(uploaded_file)
+#     #     st.image(image, width = 256, height = 256)
+#     #     image = img_to_array(image)
+#     #     image = image/255
+#     #     image = np.expand_dims(image,axis=0)
+#     #     result = np.argmax(leaf_model.predict(image))
+#     #     pred = healthType[result]
+#     #     st.header("The state of your leaf is - "+ pred )
+#     #     st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
+#
+#     ####################################################################################################################### SHAPE ERROR, secondary method
+#     if uploaded_file is not None:
+#         #image = load_img(image_path,target_size=(250,250))
+#         image = Image.open(uploaded_file)
+#         img_array = np.array(image)
+#         st.image(image, width = 256, height = 256)
+#         #image = image.reshape((1,256,256,3))
+#         pred = leaf_model.predict(image)
+#         # image = np.expand_dims(image,axis=0)
+#         pred = healthType[result]
+#         st.header("The state of your leaf is - "+ pred )
+#         st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
 
 #######################################################################################################################
-        # image = Image.open(uploaded_file)
-        # st.image(image, use_column_width=True)
-        # st.write("")
-        # name = "temp1.jpg"
-        # image.save(datapath+name)
-        # result = model_predict(datapath+name, leaf_model)
-        # pred = healthType[result]
-        # st.header("Your leaf is - "+ pred )
-        # st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
+        image = Image.open(uploaded_file)
+        st.image(image, use_column_width=True)
+        st.write("")
+        name = "temp1.jpg"
+        image.save(datapath+name)
+        result = model_predict(datapath+name, leaf_model)
+        pred = healthType[result]
+        st.header("Your leaf is - "+ pred )
+        st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
 
 #######################################################################################################################
         # image = Image.open(uploaded_file)
