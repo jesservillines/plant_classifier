@@ -124,7 +124,7 @@ def health():
         image2 = array_to_img(image1)
         array = img_to_array(image2)
         st.header("Your array is - "+ str(array) )
-        array = array.reshape((1,250,250,3))
+        array = array.reshape((1,256,256,3))
 
         result = leaf_classifier.predict(array)
         result1 = np.argmax(result, axis =1)
