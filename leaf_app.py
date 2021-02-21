@@ -114,24 +114,43 @@ def health():
     uploaded_file = st.file_uploader("Upload an image", type = ['jpg', 'png', 'jpeg'])
 
     if uploaded_file is not None:
-        image = Image.open(uploaded_file)
-        st.image(image, use_column_width=True)
+        image1 = Image.open(uploaded_file)
+        st.image(image1,width=250, height=250)
+
+    confirm = st.button('Confirm Image')
+
+    if confirm:
+        leaf_classifier = load_model('model/classifier2.h5')
+        image2 = array_to_img(image1)
+        array = img_to_array(image2)
+        array = array.reshape((1,250,250,3))
+
+        result = leaf_classifier.predict(array)
+        result1 = np.argmax(result, axis =1)
+        pred = str(result1)
+        st.header("Your leaf is - "+ pred )
+
+
+        #st.image(image, use_column_width=True)
         # st.write("")
         # name = "temp1.jpg"
         # image.save(datapath+name)
 
         #image = load_img(datapath+name,target_size=(250,250))
-        image = img_to_array(image)
-        image = image/255
-        image = np.expand_dims(image,axis=0)
-        leaf_model = load_model('model/classifier2.h5')
-        result = np.argmax(leaf_model.predict(image))
-        pred = str(result)
-
+        
+            #first option here, but gives 29 erry time
+            # st.image(image1,width=250, height=250)
+            # image = img_to_array(image)
+            # image = image/255
+            # image = np.expand_dims(image,axis=0)
+            # leaf_model = load_model('model/classifier2.h5')
+            # result = np.argmax(leaf_model.predict(image))
+            # pred = str(result)
+            # st.header("Your leaf is - "+ pred )
 
         # result = model_predict(datapath+name, leaf_model)
         # pred = str(result) #healthType[result]
-        st.header("Your leaf is - "+ pred )
+
         #st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
 
 
