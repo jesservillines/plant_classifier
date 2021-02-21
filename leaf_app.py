@@ -193,6 +193,7 @@ def model_predict(image_path,model):
     image = img_to_array(image)
     image = image/255
     image = np.expand_dims(image,axis=0)
+    leaf_model = load_model('model/classifier2.h5')
     result = np.argmax(leaf_model.predict(image))
     return result
 
