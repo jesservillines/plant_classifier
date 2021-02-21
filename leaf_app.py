@@ -82,7 +82,7 @@ healthType = ['Apple - Black Rot',
  'Tomato - Early blight',
  'Tomato - Healthy'
  'Tomato - Late Blight',
- 'Tomato - Leaf Mold',
+ #'Tomato - Leaf Mold',
  'Tomato - Septoria Leaf spot',
  'Tomato - Spider mite',
  'Tomato - Target Spot',
