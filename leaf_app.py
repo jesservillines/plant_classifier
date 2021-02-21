@@ -123,6 +123,7 @@ def health():
         leaf_classifier = load_model('model/classifier2.h5')
         image2 = array_to_img(image1)
         array = img_to_array(image2)
+        st.header("Your array is - "+ str(array) )
         array = array.reshape((1,250,250,3))
 
         result = leaf_classifier.predict(array)
@@ -137,7 +138,7 @@ def health():
         # image.save(datapath+name)
 
         #image = load_img(datapath+name,target_size=(250,250))
-        
+
             #first option here, but gives 29 erry time
             # st.image(image1,width=250, height=250)
             # image = img_to_array(image)
