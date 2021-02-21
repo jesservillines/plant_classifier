@@ -116,9 +116,9 @@ def health():
     if uploaded_file is not None:
         image = Image.open(uploaded_file)
         st.image(image, use_column_width=True)
-        st.write("")
-        name = "temp1.jpg"
-        image.save(datapath+name)
+        # st.write("")
+        # name = "temp1.jpg"
+        # image.save(datapath+name)
 
         image = load_img(datapath+name,target_size=(250,250))
         image = img_to_array(image)
@@ -132,7 +132,7 @@ def health():
         # result = model_predict(datapath+name, leaf_model)
         # pred = str(result) #healthType[result]
         st.header("Your leaf is - "+ pred )
-        st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
+        #st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
 
 
 
