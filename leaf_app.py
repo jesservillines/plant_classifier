@@ -108,7 +108,7 @@ def health():
     st.title("Your plant, is it healthy or what?!")
     st.subheader("Soon you will know.")
     set_png_as_page_bg(datapath+'image_1.jpg')
-    leaf_model = load_model('model/classifier.h5')
+    leaf_model = load_model('model/classifier1.h5')
     st.set_option('deprecation.showfileUploaderEncoding', True)
     st.subheader("Take photo of a leaf with your camera and upload here.")
     uploaded_file = st.file_uploader("Upload an image", type = ['jpg', 'png', 'jpeg'])
