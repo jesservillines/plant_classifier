@@ -120,7 +120,7 @@ def health():
         # name = "temp1.jpg"
         # image.save(datapath+name)
 
-        image = load_img(datapath+name,target_size=(250,250))
+        #image = load_img(datapath+name,target_size=(250,250))
         image = img_to_array(image)
         image = image/255
         image = np.expand_dims(image,axis=0)
