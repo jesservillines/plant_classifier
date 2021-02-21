@@ -193,7 +193,7 @@ def model_predict(image_path,model):
     image = img_to_array(image)
     image = image/255
     image = np.expand_dims(image,axis=0)
-    result = np.argmax(model.predict(image))
+    result = np.argmax(leaf_model.predict(image))
     return result
 
 if __name__ == '__main__':
