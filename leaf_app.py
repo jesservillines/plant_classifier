@@ -82,7 +82,7 @@ healthType = ['Apple - Black Rot',
  'Tomato - Early blight',
  'Tomato - Healthy'
  'Tomato - Late Blight',
- #'Tomato - Leaf Mold',
+ 'Tomato - Leaf Mold',
  'Tomato - Septoria Leaf spot',
  'Tomato - Spider mite',
  'Tomato - Target Spot',
@@ -117,7 +117,7 @@ def health():
         image = Image.open(uploaded_file)
         st.image(image, use_column_width=True)
         st.write("")
-        name = "temp2.jpg"
+        name = "temp1.jpg"
         image.save(datapath+name)
         result = model_predict(datapath+name, leaf_model)
         pred = healthType[result]
