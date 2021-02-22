@@ -108,14 +108,14 @@ def health():
     st.title("Your plant, is it healthy or what?!")
     st.subheader("Soon you will know.")
     set_png_as_page_bg(datapath+'image_1.jpg')
-    leaf_model = load_model('model/classifier2.h5')
+    leaf_model = load_model('model/classifier2')
     st.set_option('deprecation.showfileUploaderEncoding', True)
     st.subheader("Take photo of a leaf with your camera and upload here.")
     uploaded_file = st.file_uploader("Upload an image", type = ['jpg', 'png', 'jpeg'])
 
     if uploaded_file is not None:
         image1 = Image.open(uploaded_file)
-        st.image(image1,width=250, height=250)
+        st.image(image1,width=256, height=256)
 
     confirm = st.button('Confirm Image')
 
