@@ -7,7 +7,6 @@ import base64
 import sys
 import io
 
-#classes = {0:"Scab",1:"Rot",2:"Rust",3:"Healthy"}
 
 suggestions = {
 'Apple - Black Rot':"You have got the Black Rot! Do the Black Rot treatment as soon as possible!",
@@ -36,6 +35,7 @@ suggestions = {
  'Soybean - Healthy':"Congratulations; healthy leaf, healthy life. Continue doing what you are doing.",
  'Squash - Powdery Mildew':"You have got the Powdery mildew! Do the Powdery mildew treatment as soon as possible!",
  'Strawberry - Healthy':"Congratulations; healthy leaf, healthy life. Continue doing what you are doing.",
+ 'Strawbery - Leaf Scorch':"You have got the Bacterial spot! Do the Bacterial spot treatment as soon as possible!",
  'Tomato - Bacterial spot':"You have got the Bacterial spot! Do the Bacterial spot treatment as soon as possible!",
  'Tomato - Early blight':"You have got the Early blight! Do the Early blight treatment as soon as possible!",
  'Tomato - Healthy':"Congratulations; healthy leaf, healthy life. Continue doing what you are doing.",
@@ -46,13 +46,13 @@ suggestions = {
  'Tomato - Target Spot':"You have got the Target Spot! Do the Target Spot treatment as soon as possible!",
  'Tomato - Yellow Leaf':"You have got the Yellow Leaf! Do the Yellow Leaf treatment as soon as possible!",
  'Tomato - Mosaic virus':"You have got the Mosaic virus! Do the Mosaic virus treatment as soon as possible!",
- 'other':'other'
+ 'Healthy':"Congratulations; healthy leaf, healthy life. Continue doing what you are doing."
  }
-
+ 
 sys.setrecursionlimit(10000)
 
 
-healthType = ['Healthy',
+healthType = [
 'Apple - Black Rot',
  'Apple - Cedar Apple Rust',
  'Apple - Healthy',
@@ -105,7 +105,6 @@ def main():
 
 
 
-
 def health():
     st.title("Your plant, is it healthy or what?!")
     st.subheader("Soon you will know.")
@@ -125,8 +124,7 @@ def health():
         pred = healthType[result]
         st.header("Your leaf is - " + str(result))
         st.header("Your leaf is - " + pred )
-        #st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
-
+        st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
 
 
 def homepage():
