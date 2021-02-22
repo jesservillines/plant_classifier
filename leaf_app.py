@@ -52,7 +52,8 @@ suggestions = {
 sys.setrecursionlimit(10000)
 
 
-healthType = ['Apple - Black Rot',
+healthType = ['Healthy',
+'Apple - Black Rot',
  'Apple - Cedar Apple Rust',
  'Apple - Healthy',
  'Blueberry - Healthy',
