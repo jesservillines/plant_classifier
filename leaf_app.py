@@ -52,45 +52,45 @@ suggestions = {
 sys.setrecursionlimit(10000)
 
 
-healthType = ['Apple - Black Rot',
- 'Apple - Cedar Apple Rust',
- 'Apple - Healthy',
- 'Blueberry - Healthy',
- 'Cherry - Healthy',
- 'Cherry - Powdery Mildew',
- 'Corn - Gray Leaf Spot',
- 'Corn - Common Rust',
- 'Corn - Healthy',
- 'Corn - Northern Leaf Blight',
- 'Grape - Black Rot',
- 'Grape - Esca',
- 'Grape - Healthy',
- 'Grape - Leaf Blight',
- 'Orange - Haunglongbing',
- 'Peach - Bacterial Spot',
- 'Peach - Healthy',
- 'Bell Pepper - Bacterial Spot',
- 'Bell Pepper - Healthy'
- 'Potato - Early blight',
- 'Potato - Healthy',
- 'Potato - Late blight',
- 'Rasberry - Healthy',
- 'Soybean - Healthy',
- 'Squash - Powdery Mildew',
- 'Strawberry - Healthy',
- 'Strawberry - Leaf scorch',
- 'Tomato - Bacterial spot',
- 'Tomato - Early blight',
- 'Tomato - Healthy'
- 'Tomato - Late Blight',
- 'Tomato - Leaf Mold',
- 'Tomato - Septoria Leaf spot',
- 'Tomato - Spider mite',
- 'Tomato - Target Spot',
- 'Tomato - Yellow Leaf',
- 'Tomato - Mosaic virus',
- 'other'
- ]
+# healthType = ['Apple - Black Rot',
+#  'Apple - Cedar Apple Rust',
+#  'Apple - Healthy',
+#  'Blueberry - Healthy',
+#  'Cherry - Healthy',
+#  'Cherry - Powdery Mildew',
+#  'Corn - Gray Leaf Spot',
+#  'Corn - Common Rust',
+#  'Corn - Healthy',
+#  'Corn - Northern Leaf Blight',
+#  'Grape - Black Rot',
+#  'Grape - Esca',
+#  'Grape - Healthy',
+#  'Grape - Leaf Blight',
+#  'Orange - Haunglongbing',
+#  'Peach - Bacterial Spot',
+#  'Peach - Healthy',
+#  'Bell Pepper - Bacterial Spot',
+#  'Bell Pepper - Healthy'
+#  'Potato - Early blight',
+#  'Potato - Healthy',
+#  'Potato - Late blight',
+#  'Rasberry - Healthy',
+#  'Soybean - Healthy',
+#  'Squash - Powdery Mildew',
+#  'Strawberry - Healthy',
+#  'Strawberry - Leaf scorch',
+#  'Tomato - Bacterial spot',
+#  'Tomato - Early blight',
+#  'Tomato - Healthy'
+#  'Tomato - Late Blight',
+#  'Tomato - Leaf Mold',
+#  'Tomato - Septoria Leaf spot',
+#  'Tomato - Spider mite',
+#  'Tomato - Target Spot',
+#  'Tomato - Yellow Leaf',
+#  'Tomato - Mosaic virus',
+#  'other'
+#  ]
 
 
 datapath = "app_pics/"
@@ -123,8 +123,9 @@ def health():
         image.save(datapath+name)
         result = model_predict(datapath+name, leaf_model)
         pred = healthType[result]
-        st.header("Your leaf is - "+ pred )
-        st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
+        print(str(result))
+        st.header("Your leaf is - " + pred )
+        #st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
 
 
 
