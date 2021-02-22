@@ -27,7 +27,7 @@ def health():
     st.title("Your plant, is it healthy or what?!")
     st.subheader("Soon you will know.")
     set_background_image(datapath+'image_1.jpg') # set background image for page
-    leaf_classifier = load_model('model/model0.h5') #upload repository model
+    leaf_classifier = load_model('model/model0') #upload repository model
     st.set_option('deprecation.showfileUploaderEncoding', True)
     st.subheader("Take photo of a leaf with your camera and upload here.")
     upload_photo = st.file_uploader("Upload an image", type = ['jpg', 'png', 'jpeg']) #can adjust to include different image types
