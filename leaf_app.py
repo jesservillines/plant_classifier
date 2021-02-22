@@ -1,3 +1,4 @@
+#import packages. These also need to be in the requirements.txt
 import streamlit as st
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import load_img, img_to_array, array_to_img
@@ -7,8 +8,109 @@ import base64
 import sys
 import io
 
+#to allow for larger size photos from phone
+sys.setrecursionlimit(10000)
 
-suggestions = {
+#set datapath for call later
+datapath = "app_pics/"
+
+#This allows for multiple pages
+def main():
+    page = st.sidebar.selectbox("App Selections", ["Homepage", "About"])
+    if page == "Homepage":
+        health()
+    elif page == "About":
+        about()
+
+#this is the upload/prediction page
+def health():
+    st.title("Your plant, is it healthy or what?!")
+    st.subheader("Soon you will know.")
+    set_background_image(datapath+'image_1.jpg') # set background image for page
+    leaf_classifier = load_model('model/leaf-model.h5') #upload repository model
+    st.set_option('deprecation.showfileUploaderEncoding', True)
+    st.subheader("Take photo of a leaf with your camera and upload here.")
+    upload_photo = st.file_uploader("Upload an image", type = ['jpg', 'png', 'jpeg']) #can adjust to include different image types
+    if upload_photo is not None:
+        image = Image.open(upload_photo)
+        st.image(image, use_column_width=True)
+        st.write("")
+        name = "temp2.jpg"
+        image.save(datapath+name)
+        result = model_predict(datapath+name, leaf_classifier)
+        pred = type[result]
+        #st.header("Your leaf is - " + str(result)) #for error checking the lists
+        st.header("Your leaf is - " + pred )
+        st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestion[pred])
+
+#run the model predictions
+def model_predict(image_path,model):
+    image = load_img(image_path,target_size=(224,224))
+    image = img_to_array(image)
+    image = image/255
+    image = np.expand_dims(image,axis=0)
+    result = np.argmax(model.predict(image))
+    return result
+
+# def homepage():
+#     html_template = """
+#     <html>
+#     <head>
+#     <style>
+#     body {
+#       background-color: #fe2631;
+#     }
+#     </style>
+#     </head>
+#     <body>
+#     </body>
+#     """
+#     st.markdown(html_template, unsafe_allow_html = True)
+#     image = Image.open(datapath +'image_1.jpg')
+#     st.image(image, use_column_width = True)
+
+#the about page
+def about():
+    html_template = """
+    <html>
+    <head>
+    <style>
+    body {
+      background-color: #fe2631;
+    }
+    </style>
+    </head>
+    <body>
+    </body>
+    """
+    set_background_image(datapath+'image_1.jpg')
+    st.title("Leaf Life")
+    st.header("Supported Plants: Apple, blueberry, cherry, corn, grape, orange, peach, bell pepper, potato, raspberry, soybean, squash, strawberry, tomato, and more coming soon!")
+    st.subheader("Author's Linkedin: https://www.linkedin.com/in/jesse-villines/")
+    st.subheader("Author's Github: https://github.com/jesservillines")
+    st.subheader("Version 1.0")
+
+def base64_background(bin_file):
+    with open(bin_file, 'rb') as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
+
+def set_background_image(png_file):
+    bin_str = base64_background(png_file)
+    background_image_style = '''
+    <style>
+    body {
+    background-image: url("data:image/png;base64,%s");
+    background-size: 2200px;
+    background-repeat: no-repeat;
+    }
+    </style>
+    ''' % bin_str
+    st.markdown(background_image_style, unsafe_allow_html=True)
+
+#suggestions are based on the type of disease. Future development will expand this section to include
+#real suggestions
+suggestion = {
 'Healthy':"Congratulations; healthy leaf, healthy life. Continue doing what you are doing.",
 'Apple - Black Rot':"You have got the Black Rot! Do the Black Rot treatment as soon as possible!",
  'Apple - Cedar Apple Rust':"You have got the Cedar Apple Rust! Do the Cedar Apple Rust treatment as soon as possible!",
@@ -49,10 +151,9 @@ suggestions = {
  'Tomato - Healthy':"Congratulations; healthy leaf, healthy life. Continue doing what you are doing.",
  }
 
-sys.setrecursionlimit(10000)
-
-
-healthType = ['Plant - Healthy',
+# this is the type of disease, this section will be expanded in the future to allow for additional
+#leaf types
+type = ['Plant - Healthy',
 'Apple - Black Rot',
  'Apple - Cedar Apple Rust',
  'Apple - Healthy',
@@ -92,110 +193,6 @@ healthType = ['Plant - Healthy',
  'Tomato - Healthy',
  'Healthy'
  ]
-
-datapath = "app_pics/"
-
-
-def main():
-    page = st.sidebar.selectbox("App Selections", ["Homepage", "About"])
-    if page == "Homepage":
-        health()
-    elif page == "About":
-        about()
-
-
-
-def health():
-    st.title("Your plant, is it healthy or what?!")
-    st.subheader("Soon you will know.")
-    set_png_as_page_bg(datapath+'image_1.jpg')
-    leaf_model = load_model('model/leaf-model.h5')
-    st.set_option('deprecation.showfileUploaderEncoding', True)
-    st.subheader("Take photo of a leaf with your camera and upload here.")
-    uploaded_file = st.file_uploader("Upload an image", type = ['jpg', 'png', 'jpeg'])
-
-    if uploaded_file is not None:
-        image = Image.open(uploaded_file)
-        st.image(image, use_column_width=True)
-        st.write("")
-        name = "temp2.jpg"
-        image.save(datapath+name)
-        result = model_predict(datapath+name, leaf_model)
-        pred = healthType[result]
-        #st.header("Your leaf is - " + str(result))
-        st.header("Your leaf is - " + pred )
-        st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
-
-
-def homepage():
-    html_temp = """
-    <html>
-    <head>
-    <style>
-    body {
-      background-color: #fe2631;
-    }
-    </style>
-    </head>
-    <body>
-    </body>
-    """
-    st.markdown(html_temp, unsafe_allow_html = True)
-    image = Image.open(datapath +'image_1.jpg')
-    st.image(image, use_column_width = True)
-
-
-def about():
-
-    html_temp = """
-    <html>
-    <head>
-    <style>
-    body {
-      background-color: #fe2631;
-    }
-    </style>
-    </head>
-    <body>
-    </body>
-    """
-
-    set_png_as_page_bg(datapath+'image_1.jpg')
-    st.title("Leaf Life")
-    st.header("Supported Plants: Apple, blueberry, cherry, corn, grape, orange, peach, bell pepper, potato, raspberry, soybean, squash, strawberry, tomato, and more coming soon!")
-    st.subheader("Author's Linkedin: https://www.linkedin.com/in/jesse-villines/")
-    st.subheader("Author's Github: https://github.com/jesservillines")
-    st.subheader("Version 1.0")
-
-
-
-
-#@st.cache(allow_output_mutation=True)
-def get_base64_of_bin_file(bin_file):
-    with open(bin_file, 'rb') as f:
-        data = f.read()
-    return base64.b64encode(data).decode()
-
-def set_png_as_page_bg(png_file):
-    bin_str = get_base64_of_bin_file(png_file)
-    page_bg_img = '''
-    <style>
-    body {
-    background-image: url("data:image/png;base64,%s");
-    background-size: 2200px;
-    background-repeat: no-repeat;
-    }
-    </style>
-    ''' % bin_str
-    st.markdown(page_bg_img, unsafe_allow_html=True)
-
-def model_predict(image_path,model):
-    image = load_img(image_path,target_size=(224,224))
-    image = img_to_array(image)
-    image = image/255
-    image = np.expand_dims(image,axis=0)
-    result = np.argmax(model.predict(image))
-    return result
 
 if __name__ == '__main__':
     main()
