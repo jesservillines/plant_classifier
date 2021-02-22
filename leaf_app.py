@@ -155,7 +155,7 @@ type = {0:'Plant - Healthy',
  16:'Peach - Bacterial Spot',
  17:'Peach - Healthy',
  18:'Bell Pepper - Bacterial Spot',
- 19:'Bell Pepper - Healthy'
+ 19:'Bell Pepper - Healthy',
  20:'Potato - Early blight',
  21:'Potato - Late blight',
   22:'Potato - Healthy',
