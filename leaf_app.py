@@ -35,7 +35,7 @@ suggestions = {
  'Rasberry - Healthy':"Congratulations; healthy leaf, healthy life. Continue doing what you are doing.",
  'Soybean - Healthy':"Congratulations; healthy leaf, healthy life. Continue doing what you are doing.",
  'Squash - Powdery Mildew':"You have got the Powdery mildew! Do the Powdery mildew treatment as soon as possible!",
- 'Strawberry - Leaf scorch':"You have got the Bacterial spot! Do the Bacterial spot treatment as soon as possible!",
+ 'Strawberry - Leaf scorch':"You have got the Leaf scorch! Do the Leaf scorch treatment as soon as possible!",
  'Strawberry - Healthy':"Congratulations; healthy leaf, healthy life. Continue doing what you are doing.",
  'Tomato - Bacterial spot':"You have got the Bacterial spot! Do the Bacterial spot treatment as soon as possible!",
  'Tomato - Early blight':"You have got the Early blight! Do the Early blight treatment as soon as possible!",
@@ -122,7 +122,7 @@ def health():
         image.save(datapath+name)
         result = model_predict(datapath+name, leaf_model)
         pred = healthType[result]
-        st.header("Your leaf is - " + str(result))
+        #st.header("Your leaf is - " + str(result))
         st.header("Your leaf is - " + pred )
         st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
 
