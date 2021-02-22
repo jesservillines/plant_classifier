@@ -45,7 +45,7 @@ def health():
 
 #run the model predictions
 def model_predict(image_path,model):
-    image = load_img(image_path,target_size=(224,224))
+    image = load_img(image_path,target_size=(248,248))
     image = img_to_array(image)
     image = image/255
     image = np.expand_dims(image,axis=0)
