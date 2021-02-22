@@ -27,7 +27,7 @@ def health():
     st.title("Your plant, is it healthy or what?!")
     st.subheader("Soon you will know.")
     set_background_image(datapath+'image_1.jpg') # set background image for page
-    leaf_classifier = load_model('model/leaf-model.h5') #upload repository model
+    leaf_classifier = load_model('model/model0.h5') #upload repository model
     st.set_option('deprecation.showfileUploaderEncoding', True)
     st.subheader("Take photo of a leaf with your camera and upload here.")
     upload_photo = st.file_uploader("Upload an image", type = ['jpg', 'png', 'jpeg']) #can adjust to include different image types
@@ -68,18 +68,18 @@ def about():
     """
     set_background_image(datapath+'image_1.jpg')
     st.title("Leaf Life")
-    st.header("Supported Plants: Apple, blueberry, cherry, corn, grape, orange, peach, bell pepper, potato, raspberry, soybean, squash, strawberry, tomato, and more coming soon!")
+    st.header("Supported Plants: Apple, blueberry, cherry, corn, grape, orange, peach, bell pepper, potato, raspberry, soybean, squash, strawberry, tomato, with more coming soon!")
     st.subheader("Author's Linkedin: https://www.linkedin.com/in/jesse-villines/")
     st.subheader("Author's Github: https://github.com/jesservillines")
     st.subheader("Version 1.0")
 
-def base64_background(bin_file):
-    with open(bin_file, 'rb') as f:
+def base64_background(background_file):
+    with open(background_file, 'rb') as f:
         data = f.read()
     return base64.b64encode(data).decode()
 
-def set_background_image(png_file):
-    bin_str = base64_background(png_file)
+def set_background_image(jpg_image):
+    bin_str = base64_background(jpg_image)
     background_image_style = '''
     <style>
     body {
