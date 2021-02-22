@@ -160,7 +160,7 @@ def health():
         image.save(datapath+name)
         result = model_predict(datapath+name, leaf_model)
         pred = healthType[result]
-        print(str(result))
+        st.header("Your leaf is - " + str(result))
         st.header("Your leaf is - " + pred )
         #st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
 
