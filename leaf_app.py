@@ -94,7 +94,6 @@ def set_background_image(jpg_image):
 #suggestions are based on the type of disease. Future development will expand this section to include
 #real suggestions
 suggestion = {
-'Plant - Healthy':"Congratulations; healthy leaf, healthy life. Continue doing what you are doing.",
 'Apple - Black Rot':"You have got the Black Rot! Do the Black Rot treatment as soon as possible!",
  'Apple - Cedar Apple Rust':"You have got the Cedar Apple Rust! Do the Cedar Apple Rust treatment as soon as possible!",
  'Apple - Healthy':"Congratulations; healthy leaf, healthy life. Continue doing what you are doing.",
@@ -136,8 +135,7 @@ suggestion = {
 
 # this is the type of disease, this section will be expanded in the future to allow for additional
 #leaf types
-type = {0:'Plant - Healthy',
-1:'Apple - Black Rot',
+type = {1:'Apple - Black Rot',
  2:'Apple - Cedar Apple Rust',
  3:'Apple - Healthy',
  4:'Blueberry - Healthy',
