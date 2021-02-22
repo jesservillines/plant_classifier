@@ -94,7 +94,7 @@ def set_background_image(png_file):
 #suggestions are based on the type of disease. Future development will expand this section to include
 #real suggestions
 suggestion = {
-'Healthy':"Congratulations; healthy leaf, healthy life. Continue doing what you are doing.",
+'Plant - Healthy':"Congratulations; healthy leaf, healthy life. Continue doing what you are doing.",
 'Apple - Black Rot':"You have got the Black Rot! Do the Black Rot treatment as soon as possible!",
  'Apple - Cedar Apple Rust':"You have got the Cedar Apple Rust! Do the Cedar Apple Rust treatment as soon as possible!",
  'Apple - Healthy':"Congratulations; healthy leaf, healthy life. Continue doing what you are doing.",
