@@ -189,7 +189,7 @@ def set_png_as_page_bg(png_file):
     st.markdown(page_bg_img, unsafe_allow_html=True)
 
 def model_predict(image_path,model):
-    image = load_img(image_path,target_size=(250,250))
+    image = load_img(image_path,target_size=(224,224))
     image = img_to_array(image)
     image = image/255
     image = np.expand_dims(image,axis=0)
