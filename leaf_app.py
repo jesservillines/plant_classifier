@@ -52,23 +52,6 @@ def model_predict(image_path,model):
     result = np.argmax(model.predict(image))
     return result
 
-# def homepage():
-#     html_template = """
-#     <html>
-#     <head>
-#     <style>
-#     body {
-#       background-color: #fe2631;
-#     }
-#     </style>
-#     </head>
-#     <body>
-#     </body>
-#     """
-#     st.markdown(html_template, unsafe_allow_html = True)
-#     image = Image.open(datapath +'image_1.jpg')
-#     st.image(image, use_column_width = True)
-
 #the about page
 def about():
     html_template = """
