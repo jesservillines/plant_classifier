@@ -9,6 +9,7 @@ import io
 
 
 suggestions = {
+'Healthy':"Congratulations; healthy leaf, healthy life. Continue doing what you are doing.",
 'Apple - Black Rot':"You have got the Black Rot! Do the Black Rot treatment as soon as possible!",
  'Apple - Cedar Apple Rust':"You have got the Cedar Apple Rust! Do the Cedar Apple Rust treatment as soon as possible!",
  'Apple - Healthy':"Congratulations; healthy leaf, healthy life. Continue doing what you are doing.",
@@ -46,13 +47,12 @@ suggestions = {
  'Tomato - Target Spot':"You have got the Target Spot! Do the Target Spot treatment as soon as possible!",
  'Tomato - Yellow Leaf':"You have got the Yellow Leaf! Do the Yellow Leaf treatment as soon as possible!",
  'Tomato - Mosaic virus':"You have got the Mosaic virus! Do the Mosaic virus treatment as soon as possible!",
- 'Healthy':"Congratulations; healthy leaf, healthy life. Continue doing what you are doing."
  }
- 
+
 sys.setrecursionlimit(10000)
 
 
-healthType = [
+healthType = ['Plant - Healthy',
 'Apple - Black Rot',
  'Apple - Cedar Apple Rust',
  'Apple - Healthy',
