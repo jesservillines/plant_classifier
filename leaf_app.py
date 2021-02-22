@@ -108,51 +108,21 @@ def health():
     st.title("Your plant, is it healthy or what?!")
     st.subheader("Soon you will know.")
     set_png_as_page_bg(datapath+'image_1.jpg')
-    leaf_model = load_model('model/classifier2')
+    leaf_model = load_model('model/leaf-model.h5')
     st.set_option('deprecation.showfileUploaderEncoding', True)
     st.subheader("Take photo of a leaf with your camera and upload here.")
     uploaded_file = st.file_uploader("Upload an image", type = ['jpg', 'png', 'jpeg'])
 
     if uploaded_file is not None:
-        image1 = Image.open(uploaded_file)
-        st.image(image1,width=256, height=256)
-
-    confirm = st.button('Confirm Image')
-
-    if confirm:
-        leaf_classifier = load_model('model/classifier2.h5')
-        image2 = array_to_img(image1)
-        array = img_to_array(image2)
-        st.header("Your array is - "+ str(array) )
-        array = array.reshape((1,256,256,3))
-
-        result = leaf_classifier.predict(array)
-        result1 = np.argmax(result, axis =1)
-        pred = str(result1)
+        image = Image.open(uploaded_file)
+        st.image(image, use_column_width=True)
+        st.write("")
+        name = "temp2.jpg"
+        image.save(datapath+name)
+        result = model_predict(datapath+name, leaf_model)
+        pred = healthType[result]
         st.header("Your leaf is - "+ pred )
-
-
-        #st.image(image, use_column_width=True)
-        # st.write("")
-        # name = "temp1.jpg"
-        # image.save(datapath+name)
-
-        #image = load_img(datapath+name,target_size=(250,250))
-
-            #first option here, but gives 29 erry time
-            # st.image(image1,width=250, height=250)
-            # image = img_to_array(image)
-            # image = image/255
-            # image = np.expand_dims(image,axis=0)
-            # leaf_model = load_model('model/classifier2.h5')
-            # result = np.argmax(leaf_model.predict(image))
-            # pred = str(result)
-            # st.header("Your leaf is - "+ pred )
-
-        # result = model_predict(datapath+name, leaf_model)
-        # pred = str(result) #healthType[result]
-
-        #st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
+        st.subheader("The suggested recovery plan for "+ pred + " is: "+ suggestions[pred])
 
 
 
@@ -223,8 +193,7 @@ def model_predict(image_path,model):
     image = img_to_array(image)
     image = image/255
     image = np.expand_dims(image,axis=0)
-    leaf_model = load_model('model/classifier2.h5')
-    result = np.argmax(leaf_model.predict(image))
+    result = np.argmax(model.predict(image))
     return result
 
 if __name__ == '__main__':
