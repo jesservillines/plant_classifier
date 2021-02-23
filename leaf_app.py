@@ -27,7 +27,7 @@ def health():
     st.title("Your plant, is it healthy or what?!")
     st.subheader("Soon you will know.")
     set_background_image(datapath+'image_1.jpg') # set background image for page
-    leaf_classifier = load_model('model/leaf_classifier00.h5') #upload repository model
+    leaf_classifier = load_model('model/leaf_classifier00.h5') #load repository model
     st.set_option('deprecation.showfileUploaderEncoding', True)
     st.subheader("Take photo of a leaf with your camera and upload here.")
     upload_photo = st.file_uploader("Upload an image", type = ['jpg', 'png', 'jpeg']) #can adjust to include different image types
@@ -45,7 +45,7 @@ def health():
 
 #run the model predictions
 def model_predict(image_path,model):
-    image = load_img(image_path,target_size=(248,248))
+    image = load_img(image_path,target_size=(224,224))
     image = img_to_array(image)
     image = image/255
     image = np.expand_dims(image,axis=0)
