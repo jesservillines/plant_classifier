@@ -108,7 +108,7 @@ suggestion = {
  'Grape - Esca':"You have got the Esca! Do the Esca treatment as soon as possible!",
  'Grape - Leaf Blight':"You have got the Leaf blight! Do the Leaf blight treatment as soon as possible!",
  'Grape - Healthy':"Congratulations; healthy leaf, healthy life. Continue doing what you are doing.",
- 'Orange - Haunglongbin':"You have got the Haunglongbin! Do the Haunglongbin treatment as soon as possible!",
+ 'Orange - Haunglongbing':"You have got the Haunglongbin! Do the Haunglongbin treatment as soon as possible!",
  'Peach - Bacterial Spot':"You have got the Bacterial spot! Do the Bacterial spot treatment as soon as possible!",
  'Peach - Healthy':"Congratulations; healthy leaf, healthy life. Continue doing what you are doing.",
  'Bell Pepper - Bacterial Spot':"You have got the Bacterial spot! Do the Bacterial spot treatment as soon as possible!",
